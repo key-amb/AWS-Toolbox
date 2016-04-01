@@ -1,0 +1,37 @@
+#!/bin/bash
+
+set -eu
+
+host=$1
+shift
+
+exec ssh $(ec2it show -n ${host} -k ipaddress) $@
+
+: <<'__EOF__'
+
+=encoding utf8
+
+=head1 NAME
+
+B<ec2ssh> - ssh using B<ec2it>
+
+=head1 SYNOPSYS
+
+    ec2ssh <Host> [ARGS...]
+
+=head1 DESCRIPTION
+
+You can ssh by "Name" tag of EC2 instances by this script.
+
+=head1 REQUIREMENT
+
+L<ec2it|https://github.com/key-amb/ruby-ec2it>
+
+=head1 AUTHORS
+
+YASUTAKE Kiyoshi E<lt>yasutake.kiyoshi@gmail.comE<gt>
+
+=cut
+
+__EOF__
+
